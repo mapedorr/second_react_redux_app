@@ -11,7 +11,7 @@ import store, { history } from './store';
 import { ConnectedRouter } from 'connected-react-router';
 
 // Importar componente principal
-import App from './App';
+import App from './App.jsx';
 
 // Importar estilos
 // eslint-disable-next-line no-unused-vars
@@ -47,7 +47,7 @@ const render = () => {
 // Hot reloading
 if (module.hot) {
   // Reload components
-  module.hot.accept('./App', () => {
+  module.hot.accept('./App.jsx', () => {
     render();
   });
 }

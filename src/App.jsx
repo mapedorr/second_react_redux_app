@@ -11,7 +11,7 @@ import { Route, Switch } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as actions from './actions';
+import * as actions from './actions/actions';
 
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';

@@ -1,7 +1,7 @@
 // Esta función aplica lo que en Redux se conoce como composición de reducers.
 // Es algo así como un sub-reducer que sólo es conocido y usado por uno de los
 // reducer registrado en la aplicación.
-import { GET_COMMENTS_FOR, GET_COMMENTS_FOR_ERR } from '../actions';
+import { GET_COMMENTS_FOR, GET_COMMENTS_FOR_ERR } from '../actions/actions';
 
 const comments = (state = [], action) => {
   if (typeof action.postId !== 'undefined') {

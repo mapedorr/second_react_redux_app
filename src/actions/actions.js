@@ -8,6 +8,7 @@ Wes Bos las compara con los eventos de los elementos en el navegador: hover,
 click, out... son cosas que pasan pero no generan ningún cambio si no hay algo
 lógico que las use. 👉👉👉 Para eso están los reducers.
 */
+/* import { normalize, schema } from 'normalizr'; */
 
 export const GET_POSTS = 'GET_POSTS';
 export const GET_POSTS_ERR = 'GET_POSTS_ERR';
@@ -23,7 +24,7 @@ const fetchPosts = () => {
   return fetch(`${BASE}/posts?_limit=5`).then((response) => response.json());
 };
 
-const getPosts = (posts) => ({
+const getPosts = (posts = []) => ({
   type: GET_POSTS,
   posts
 });
@@ -37,7 +38,14 @@ const getPostsError = (msg, error) => ({
 export const getAllPosts = () => {
   return (dispatch) => {
     return fetchPosts().then(
-      (posts) => dispatch(getPosts(posts)),
+      (posts) => {
+        const mappedPosts = posts.map(({ id, title, body }) => ({
+          id,
+          title,
+          body
+        }));
+        return dispatch(getPosts(mappedPosts));
+      },
       (error) => dispatch(getPostsError('Error getting posts', error))
     );
   };
