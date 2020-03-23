@@ -1,0 +1,27 @@
+selection_color(clr) {
+  &::selection {
+    background: clr;
+  }
+
+  &::-moz-selection {
+    background: clr;
+  }
+}
+
+selection_transparent(clr) {
+  &::selection {
+    background: none;
+    color: clr;
+  }
+
+  &::-moz-selection {
+    background: none;
+    color: clr;
+  }
+}
+
+flex_center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

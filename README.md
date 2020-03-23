@@ -1,68 +1,81 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React + Redux
+Uso de React y Redux para practicar nomás.
 
-## Available Scripts
+Hecho con base en el curso de [@Wes Bos](https://twitter.com/wesbos) 👉 [Learn Redux](https://learnredux.com/) 👈.
 
-In the project directory, you can run:
+### ¿Cómo hacerlo correr en desarrollo (dev)?
+1. Instalar todas las dependencias con `npm install` o `npm i`.
+2. Ejecutar `npm start`. Se abrirá una pestaña del navegador por defecto en <localhost:7770>.
 
-### `npm start`
+### ¿Cómo hacer el build? ( 😒 ¡aún no! 😖 )
+1. Tienen que estar ya instaladas las dependencias 👆.
+2. Ejecutar `npm build`. Eso creará el directorio **dist** con todo el código JavaScript empaquetado en un `bundle.js`, el código CSS empaquetado en un `bundle.css` y las fuentes en la carpeta **fonts**.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# ¿Qué hace Redux?
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Crear un STORE en lugar de usar los diferentes state de los múltiples componentes que puede tener una aplicación React.
 
-### `npm test`
+*"Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates."*
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+👆 Tomado de [Thunks in Redux: The Basics](https://medium.com/fullstack-academy/thunks-in-redux-the-basics-85e538a3fe60) 👆
 
-### `npm run build`
+## Acciones
+Ese STORE se actualiza usando acciones. Cada acción está compuesta por dos cosas: un tipo (lo que pasó) y unos datos (payload).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Por lo general esos datos que se "cargan" a la acción son los que se usarán para actualizar lo que hay en el STORE.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Reductores
+Son los que se encargan de hacer algo cuando las acciones son ejecutadas (o disparadas). Todos los reductores se disparan a la vez para cada acción, por eso la lógica dentro de los mismos dice si la acción se ignora (retornando el *state*) o si se hace algo con ella.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Conexión
+La función *connect* del módulo `react-redux` es la que hace que el STORE funcione dentro de la aplicación. Dicha función recibe dos funciones: una con la que convertirá los datos en el STORE a *props*, y otra con la que convertirá los reductores a *props*.
 
-### `npm run eject`
+```javascript
+function mapStateToProps(state) {
+  return {
+    posts: state.posts,
+    comments: state.comments
+  }
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch)
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const App = connect(mapStateToProps, mapDispatchToProps)(Main)
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+El *state* que recibe la función `mapStateToProps` se configura en el `store.js` cuando se crea el `defaultState` a partir de los objetos que contienen las publicaciones (*posts*) y los comentarios.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```javascript
+import comments from './data/comments'
+import posts from './data/posts'
 
-## Learn More
+const defaultState = { comments, posts }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const store = createStore(
+  ...
+  defaultState
+)
+```
+## Por hacer
 
-### Code Splitting
+- [ ] Tomar los datos de una API haciendo uso de: [Redux Thunk](https://github.com/reduxjs/redux-thunk) o [Redux Saga](https://redux-saga.js.org/).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+  *Los reductores no pueden funcionar de manera asíncrona por ser funciones puras. Los módulos que exponen estas dos librerías tienen funciones para manejar la parte asíncrona antes de pasar los datos a los reductores (o sea, antes de disparar las acciones)*.
 
-### Analyzing the Bundle Size
+  - [x] Redux-Thunk
+  - [ ] Redux-Saga
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- [x] Hacer que la aplicación ✨ se vea menos paila ✨.
+- [ ] Actualizar los textos en inglés para este README.
+- [x] Hacer funcionar `npm run build`.
+- [ ] Hacer versión en Inglés del README.md
 
-### Making a Progressive Web App
+---
+---
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+`TODO: La versión en Inglés.`
