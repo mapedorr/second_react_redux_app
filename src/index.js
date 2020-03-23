@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 // Para la recarga de componentes en caliente
 import { AppContainer } from 'react-hot-loader';
+
+// Importar el React
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // Importar lo del enrutador y Redux
 import { Provider } from 'react-redux';
@@ -14,7 +15,7 @@ import App from './App';
 
 // Importar estilos
 // eslint-disable-next-line no-unused-vars
-import css from './styles/style.styl';
+import css from './styles/main.styl';
 
 // Importar Sentry para el registro de errores en su plataforma
 /* import * as Sentry from '@sentry/browser'

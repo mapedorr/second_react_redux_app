@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Post from './Post';
+import Post from './Post.jsx';
 
 export default class Posts extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllPosts();
   }
 

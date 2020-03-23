@@ -19,28 +19,28 @@ class Header extends Component {
               <Link
                 to='/'
                 className={this.getLocation() === '' ? 'active' : ''}>
-                <span className='p'>H</span>ome
+                <span className='shortcut'>H</span>ome
               </Link>
             </li>
             <li>
               <Link
                 to='/posts'
                 className={this.getLocation() === 'posts' ? 'active' : ''}>
-                <span className='p'>P</span>osts
+                <span className='shortcut'>P</span>osts
               </Link>
             </li>
             <li>
               <Link
                 to='/albums'
                 className={this.getLocation() === 'albums' ? 'active' : ''}>
-                <span className='p'>A</span>lbums
+                <span className='shortcut'>A</span>lbums
               </Link>
             </li>
             <li>
               <Link
                 to='/todos'
                 className={this.getLocation() === 'todos' ? 'active' : ''}>
-                <span className='p'>T</span>oDos
+                <span className='shortcut'>T</span>oDos
               </Link>
             </li>
           </ul>

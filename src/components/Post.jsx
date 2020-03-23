@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Comment from './Comment';
+import Comment from './Comment.jsx';
 
 export default class Post extends Component {
   componentDidMount() {

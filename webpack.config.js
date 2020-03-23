@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -33,7 +34,12 @@ module.exports = {
           {
             loader: 'style-loader' // Creates style nodes from JS strings
           },
-          MiniCssExtractPlugin.loader,
+          {
+            loader: ExtractCssChunks.loader,
+            options: {
+              hmr: true
+            }
+          },
           {
             loader: 'css-loader' // Translates CSS into CommonJS
           },
@@ -61,14 +67,17 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractCssChunks({
       filename: 'bundle.css'
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
   ],
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin({})]
+  },
   resolveLoader: {
     modules: ['node_modules']
   }

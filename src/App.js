@@ -13,12 +13,12 @@ import { connect } from 'react-redux';
 
 import * as actions from './actions';
 
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Posts from './components/Posts';
-import Albums from './components/Albums';
-import Todos from './components/Todos';
+import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
+import Home from './components/Home.jsx';
+import Posts from './components/Posts.jsx';
+import Albums from './components/Albums.jsx';
+import Todos from './components/Todos.jsx';
 
 class App extends Component {
   render() {

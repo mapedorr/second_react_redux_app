@@ -1,0 +1,13 @@
+Tareaciones:
+  ☐ Que la aplicación haga algo usando una API (puede ser de Twitter o de YouTube).
+  ☐ Meter atajos de teclado.
+  ☐ Poner elementos falsos mientras se cargan los posts y sus comentarios. O alguna animación de carga.
+Posts:
+  ☐ Que se carguen sólo una cantidad de posts y que haya paginación para cargar más.
+    👆 O que se carguen cuando se haga scroll 😮.
+    (este man lo hace >> https://github.com/andrewngu/sound-redux)
+Archive:
+✔ Ponerle mis estilos para que parezca una página vieja... o algo que hace parte de un SO. @done(20-03-23 07:48) @project(Tareaciones)
+✔ Hacer funcionar el build para meter now y empezar a desplegar a la Web. @done(20-03-23 07:48) @project(Tareaciones)
+✔ Que la aplicación haga algo usando la API de JSONPlaceholder. @done(20-03-20 08:54) @project(Tareaciones)
+✔ Hacer funcionar la fuente de IBM VGA. @done(20-03-19 08:15) @project(Tareaciones)

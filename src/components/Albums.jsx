@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Albums extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllAlbums();
   }
 
