@@ -9,10 +9,13 @@ big-shadows = 2ch 2ch 0 0px _black;
 shadows = 1ch 1ch 0 0px _black;
 scrollbar_bg = _blue
 scrollbar_thumb = _green
+cursor-arrow = url('../assets/images/arrow.png'), auto !important
+cursor-pointing_hand = url('../assets/images/pointing_hand.png'), auto !important
 
 html, * {
   // Personalizar la barra de desplazamiento del navegador
   scrollbar-color: scrollbar_thumb scrollbar_bg;
+  cursor: cursor-arrow;
 
   &::-webkit-scrollbar {
     width: 1rem;
@@ -47,6 +50,10 @@ p {
   margin: 0;
   padding: 0;
   text-align: left;
+}
+
+a, a * {
+  cursor: cursor-pointing_hand;
 }
 
 .site_wrapper {
@@ -414,12 +421,19 @@ F O O T E R
  */
 .footer {
   flex_center();
+  flex-direction: column;
   text-align: center;
   width: 100%;
   background-color: _black;
   margin-bottom: 0;
   margin-top: auto !important;
   padding: 1.2rem 0;
+
+  hr {
+    margin: 0 auto;
+    width: 20rem;
+    border-color: _yellow;
+  }
 
   h3 {
     color: _yellow;

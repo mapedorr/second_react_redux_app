@@ -62,6 +62,20 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        // Now we apply rule for images
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images',
+              esModule: false
+            }
+          }
+        ]
       }
     ]
   },
