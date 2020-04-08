@@ -15,7 +15,7 @@ import App from './App.jsx';
 
 // Importar estilos
 // eslint-disable-next-line no-unused-vars
-import css from './styles/main.styl';
+import './styles/main.styl';
 
 // Importar Sentry para el registro de errores en su plataforma
 /* import * as Sentry from '@sentry/browser'

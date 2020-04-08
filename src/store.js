@@ -23,7 +23,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 // Importar el root reducer
-import reducer from './reducers/index';
+import reducer from './reducers/reducers';
 
 export const history = createBrowserHistory();
 
@@ -38,7 +38,9 @@ const middlewareAndTools = compose(
   ),
   /* Para que Redux Tools pueda tener acceso al store y darnos control sobre lo
   que ocurre, hay que "mejorar" el store */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // ! Lo que se pasa como else sirve para que el sitio no se joda si el navegador
+  // ! no tiene la extensión Redux Tools instalada.
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
 // Crear el Store
@@ -54,7 +56,7 @@ const store = createStore(
 if (module.hot) {
   // Lo que se hace es reemplazar el reducer que contiene a todos los reducers
   // con él mismo...
-  module.hot.accept('./reducers/', () => {
+  module.hot.accept('./reducers/reducers', () => {
     store.replaceReducer(reducer(history));
   });
 }

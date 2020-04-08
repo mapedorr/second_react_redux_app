@@ -53,6 +53,7 @@ const mapStateToProps = (state) => ({
   posts: state.posts,
   comments: state.comments,
   albums: state.albums,
+  todos: state.todos,
   pathname: state.router.location.pathname
 });
 

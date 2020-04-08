@@ -14,8 +14,12 @@ export const GET_POSTS = 'GET_POSTS';
 export const GET_POSTS_ERR = 'GET_POSTS_ERR';
 export const GET_COMMENTS_FOR = 'GET_COMMENTS_FOR';
 export const GET_COMMENTS_FOR_ERR = 'GET_COMMENTS_FOR_ERR';
+
 export const GET_ALBUMS = 'GET_ALBUMS';
 export const GET_ALBUMS_ERR = 'GET_ALBUMS_ERR';
+
+export const GET_TODOS = 'GET_TODOS';
+export const GET_TODOS_ERR = 'GET_TODOS_ERR';
 
 const BASE = 'https://jsonplaceholder.typicode.com';
 
@@ -104,6 +108,32 @@ export const getAllAlbums = () => {
     return fetchAlbums().then(
       (albums) => dispatch(getAlbums(albums)),
       (error) => dispatch(getAlbumsError('Error getting albums', error))
+    );
+  };
+};
+// └───────────────────────────────────────────────────────────────────────────┘
+
+// ┌─┤ TODOS ├─────────────────────────────────────────────────────────────────┐
+const fetchTodos = () => {
+  return fetch(`${BASE}/todos?_limit=60&_expand=user`).then((response) => response.json());
+};
+
+const getTodos = (todos) => ({
+  type: GET_TODOS,
+  todos
+});
+
+const getTodosError = (msg, error) => ({
+  type: GET_TODOS_ERR,
+  msg,
+  error
+});
+
+export const getAllTodos = () => {
+  return (dispatch) => {
+    return fetchTodos().then(
+      (todos) => dispatch(getTodos(todos)),
+      (error) => dispatch(getTodosError('Error getting TODOs', error))
     );
   };
 };

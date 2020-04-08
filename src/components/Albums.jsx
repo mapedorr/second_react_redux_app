@@ -7,7 +7,7 @@ export default class Albums extends Component {
 
   render() {
     return (
-      <div className='albums_page h-100'>
+      <div className='albums_page'>
         {this.props.albums.map((album, idx) => (
           <div className='album' key={idx}>
             <a href='/' className='album_title'>
@@ -15,6 +15,9 @@ export default class Albums extends Component {
             </a>
           </div>
         ))}
+        <h1 className={this.props.albums.length > 0 ? 'd-none' : ''}>
+          Cargando...
+        </h1>
       </div>
     );
   }

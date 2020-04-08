@@ -12,6 +12,7 @@ se agrega a un evento onClick u onMouseEnter...
 */
 
 import { GET_POSTS, GET_POSTS_ERR } from '../actions/actions';
+import { getWithoutDuplicates } from '../utils/data';
 
 const posts = (state = [], action) => {
   /* Redux usa programación funcional, así que no se modifican los objetos sino
@@ -24,13 +25,7 @@ const posts = (state = [], action) => {
   /* Este state es el arreglo de posts. root://data/posts.js */
   switch (action.type) {
     case GET_POSTS:
-      let newPosts = [];
-      action.posts.forEach((post) => {
-        if (state.findIndex((_post) => _post.id === post.id) === -1) {
-          newPosts.push(post);
-        }
-      });
-      return [...state, ...newPosts];
+      return [...state, ...getWithoutDuplicates(state, action.posts)];
     case GET_POSTS_ERR:
       console.log('¡ERR!', action.msg, action.error);
       return state;

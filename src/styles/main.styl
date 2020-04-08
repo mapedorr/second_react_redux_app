@@ -7,6 +7,31 @@
 // la unidad ch es de “character width”
 big-shadows = 2ch 2ch 0 0px _black;
 shadows = 1ch 1ch 0 0px _black;
+scrollbar_bg = _blue
+scrollbar_thumb = _green
+
+html, * {
+  // Personalizar la barra de desplazamiento del navegador
+  scrollbar-color: scrollbar_thumb scrollbar_bg;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: scrollbar_bg;
+    border: 2px solid scrollbar_thumb;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: scrollbar_thumb;
+
+    // background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    // background: linear-gradient(180deg,#ff8a00,#e52e71);
+    // border-radius: 30px;
+    // box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+  }
+}
 
 body {
   background: _blue;
@@ -44,6 +69,10 @@ p {
 
 .h-100 {
   height: 100%;
+}
+
+.d-none {
+  display: none;
 }
 
 /*
@@ -194,7 +223,8 @@ M A I N  C O N T E N T
 }
 
 .page_content {
-  flex_center();
+  display: grid;
+  align-items: center;
   flex-grow: 1;
   margin: 4.5rem 2rem 1rem;
   padding: 2rem 0 0;
@@ -209,6 +239,13 @@ M A I N  C O N T E N T
 }
 
 .posts_page {
+  flex_center();
+  flex-direction: column;
+
+  h1 {
+    color: _light_blue;
+  }
+
   .post_wrapper {
     padding: 1rem;
     text-align: left;
@@ -231,6 +268,14 @@ M A I N  C O N T E N T
       margin-bottom: 1rem;
       font-size: 1.4rem;
       selection_color(_yellow);
+    }
+
+    .loading {
+      background-color: _blue;
+      border: 4px double _white;
+      color: _white;
+      font-size: 1.2rem;
+      padding-left: 2rem;
     }
 
     .comment_wrapper {
@@ -261,6 +306,11 @@ M A I N  C O N T E N T
 .albums_page {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+
+  h1 {
+    color: _green;
+  }
 
   .album {
     flex-basis: calc(33.333% - 4rem);
@@ -297,10 +347,63 @@ M A I N  C O N T E N T
 }
 
 .todos_page {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
   color: _yellow;
 
   h1 {
     selection_color(_pink);
+  }
+
+  .user {
+    .user_data {
+      color: _yellow;
+      font-size: 1.5rem;
+      margin: 0;
+
+      &::before, &::after {
+        color: _red;
+      }
+
+      &::before {
+        content: '\2500[\A0';
+      }
+
+      &::after {
+        content: '\A0]\2500\2500\2500\2500';
+      }
+
+      .user_email {
+        &::before {
+          content: '\25E4';
+        }
+
+        &::after {
+          content: '\25E2';
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+
+      .todo {
+        font-size: 1.5rem;
+
+        .todo_title {
+          color: _cyan;
+
+          &::before {
+            content: '\25C7\A0';
+          }
+
+          &.completed::before {
+            content: '\25C8\A0';
+          }
+        }
+      }
+    }
   }
 }
 

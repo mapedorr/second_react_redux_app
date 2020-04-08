@@ -8,10 +8,15 @@ export default class Posts extends Component {
 
   render() {
     return (
-      <div className='posts_page h-100'>
-        {this.props.posts.map((post, idx) => (
-          <Post post={post} key={idx} {...this.props} />
-        ))}
+      <div className='posts_page'>
+        {
+          this.props.posts.map((post, idx) => (
+            <Post post={post} key={idx} {...this.props} />
+          ))
+        }
+        <h1 className={this.props.posts.length > 0 ? 'd-none' : ''}>
+          Cargando...
+        </h1>
       </div>
     );
   }
