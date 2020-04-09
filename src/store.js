@@ -40,6 +40,7 @@ const middlewareAndTools = compose(
   que ocurre, hay que "mejorar" el store */
   // ! Lo que se pasa como else sirve para que el sitio no se joda si el navegador
   // ! no tiene la extensión Redux Tools instalada.
+  // ! Gracias Firefox Developer Edition      \(0^◇^0)/
   window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 

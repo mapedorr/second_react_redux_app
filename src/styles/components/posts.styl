@@ -1,0 +1,69 @@
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+P O S T S
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.posts_page {
+  flex_center();
+  flex-direction: column;
+
+  h1 {
+    color: _light_blue;
+  }
+
+  .post_wrapper {
+    padding: 1rem;
+    text-align: left;
+    background-color: _light_blue;
+    color: _grey;
+    margin: 0 1rem 2rem;
+
+    .post_title {
+      margin: 0 0 2rem 0;
+      border-bottom: 1px solid _red;
+      color: _yellow !important;
+      font-weight: 200;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      selection_color(_pink);
+    }
+
+    .post_body {
+      color: _pink;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      selection_color(_yellow);
+    }
+
+    .loading {
+      background-color: _blue;
+      border: 4px double _white;
+      color: _white;
+      font-size: 1.2rem;
+      padding-left: 2rem;
+    }
+
+    .comment_wrapper {
+      display: flex;
+      margin: 0 auto;
+      padding: 8px;
+      background-color: _blue;
+      border: 4px double _white;
+
+      p {
+        font-size: 1.2rem;
+
+        &.comment_email {
+          color: _white;
+          text-decoration: underline;
+          selection_color(_black);
+        }
+
+        &.comment_body {
+          margin: 0 0.5rem 0 2rem;
+          selection_color(_dark_grey);
+        }
+      }
+    }
+  }
+}

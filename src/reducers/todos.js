@@ -1,21 +1,17 @@
 import { GET_TODOS, GET_TODOS_ERR } from '../actions/actions';
-import { getWithoutDuplicates } from '../utils/data';
 
 const todos = (state = [], action) => {
   switch (action.type) {
     case GET_TODOS:
       // Agrupar los TODO por usuario
       let todosByUser = action.todos.reduce((acc, todo, idx) => {
-        let _todo = {
-          id: todo.id,
-          title: todo.title,
-          completed: todo.completed
-        };
+        const { id, title, completed } = todo;
+        const _todo = { id, title, completed };
 
         if (acc[todo.userId] === undefined) {
           acc[todo.userId] = {
             id: todo.user.id,
-            user: {...todo.user},
+            user: { ...todo.user },
             todos: [_todo],
           };
         } else {

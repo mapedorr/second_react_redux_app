@@ -21,22 +21,25 @@ export const GET_ALBUMS_ERR = 'GET_ALBUMS_ERR';
 export const GET_TODOS = 'GET_TODOS';
 export const GET_TODOS_ERR = 'GET_TODOS_ERR';
 
+export const GET_PHOTOS = 'GET_PHOTOS';
+export const GET_PHOTOS_ERR = 'GET_PHOTOS_ERR';
+
 const BASE = 'https://jsonplaceholder.typicode.com';
 
-// ┌─┤ POSTS ├─────────────────────────────────────────────────────────────────┐
+// ┌─┤ POSTS ├───────────────────────────────────────────────────────┐
 const fetchPosts = () => {
   return fetch(`${BASE}/posts?_limit=5`).then((response) => response.json());
 };
 
 const getPosts = (posts = []) => ({
   type: GET_POSTS,
-  posts
+  posts,
 });
 
 const getPostsError = (msg, error) => ({
   type: GET_POSTS_ERR,
   msg,
-  error
+  error,
 });
 
 export const getAllPosts = () => {
@@ -46,7 +49,7 @@ export const getAllPosts = () => {
         const mappedPosts = posts.map(({ id, title, body }) => ({
           id,
           title,
-          body
+          body,
         }));
         return dispatch(getPosts(mappedPosts));
       },
@@ -54,9 +57,9 @@ export const getAllPosts = () => {
     );
   };
 };
-// └───────────────────────────────────────────────────────────────────────────┘
+// └────────────────────────────────────────────────────────────────┘
 
-// ┌─┤ COMMENTS ├──────────────────────────────────────────────────────────────┐
+// ┌─┤ COMMENTS ├────────────────────────────────────────────────────┐
 const fetchComments = (postId) => {
   return fetch(`${BASE}/comments?postId=${postId}&_limit=3`).then((response) =>
     response.json()
@@ -66,14 +69,14 @@ const fetchComments = (postId) => {
 const getCommentsFor = (comments, postId) => ({
   type: GET_COMMENTS_FOR,
   comments,
-  postId
+  postId,
 });
 
 const getCommentsError = (msg, postId, error) => ({
   type: GET_COMMENTS_FOR_ERR,
   msg,
   postId,
-  error
+  error,
 });
 
 export const getAllCommentsFor = (postId) => {
@@ -85,22 +88,22 @@ export const getAllCommentsFor = (postId) => {
     );
   };
 };
-// └───────────────────────────────────────────────────────────────────────────┘
+// └────────────────────────────────────────────────────────────────┘
 
-// ┌─┤ ALBUMS ├────────────────────────────────────────────────────────────────┐
+// ┌─┤ ALBUMS ├──────────────────────────────────────────────────────┐
 const fetchAlbums = () => {
   return fetch(`${BASE}/albums?_limit=24`).then((response) => response.json());
 };
 
 const getAlbums = (albums) => ({
   type: GET_ALBUMS,
-  albums
+  albums,
 });
 
 const getAlbumsError = (msg, error) => ({
   type: GET_ALBUMS_ERR,
   msg,
-  error
+  error,
 });
 
 export const getAllAlbums = () => {
@@ -111,22 +114,24 @@ export const getAllAlbums = () => {
     );
   };
 };
-// └───────────────────────────────────────────────────────────────────────────┘
+// └────────────────────────────────────────────────────────────────┘
 
-// ┌─┤ TODOS ├─────────────────────────────────────────────────────────────────┐
+// ┌─┤ TODOS ├───────────────────────────────────────────────────────┐
 const fetchTodos = () => {
-  return fetch(`${BASE}/todos?_limit=60&_expand=user`).then((response) => response.json());
+  return fetch(`${BASE}/todos?_limit=60&_expand=user`).then((response) =>
+    response.json()
+  );
 };
 
 const getTodos = (todos) => ({
   type: GET_TODOS,
-  todos
+  todos,
 });
 
 const getTodosError = (msg, error) => ({
   type: GET_TODOS_ERR,
   msg,
-  error
+  error,
 });
 
 export const getAllTodos = () => {
@@ -137,4 +142,35 @@ export const getAllTodos = () => {
     );
   };
 };
-// └───────────────────────────────────────────────────────────────────────────┘
+// └────────────────────────────────────────────────────────────────┘
+
+// ┌─┤ PHOTOS ├──────────────────────────────────────────────────────┐
+const fetchPhotos = (id) => {
+  return fetch(`${BASE}/photos?albumId=${id}&_limit=50`).then((response) =>
+    response.json()
+  );
+};
+
+const getPhotos = (photos) => ({
+  type: GET_PHOTOS,
+  photos,
+});
+
+const getPhotosError = (msg, error) => ({
+  type: GET_PHOTOS_ERR,
+  msg,
+  error,
+});
+
+export const getPhotosFor = (albumId) => {
+  return (dispatch) => {
+    return fetchPhotos(albumId).then(
+      (photos) => dispatch(getPhotos(photos)),
+      (error) =>
+        dispatch(
+          getPhotosError(`Error getting photos for album ${albumId}`, error)
+        )
+    );
+  };
+};
+// └────────────────────────────────────────────────────────────────┘

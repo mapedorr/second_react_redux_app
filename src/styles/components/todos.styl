@@ -1,0 +1,65 @@
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+T O D O S
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.todos_page {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+  color: _yellow;
+
+  h1 {
+    selection_color(_pink);
+  }
+
+  .user {
+    .user_data {
+      color: _yellow;
+      font-size: 1.5rem;
+      margin: 0;
+
+      &::before, &::after {
+        color: _red;
+      }
+
+      &::before {
+        content: '\2500[\A0';
+      }
+
+      &::after {
+        content: '\A0]\2500\2500\2500\2500';
+      }
+
+      .user_email {
+        &::before {
+          content: '\25E4';
+        }
+
+        &::after {
+          content: '\25E2';
+        }
+      }
+    }
+
+    ul {
+      list-style: none;
+
+      .todo {
+        font-size: 1.5rem;
+
+        .todo_title {
+          color: _cyan;
+
+          &::before {
+            content: '\25C7\A0';
+          }
+
+          &.completed::before {
+            content: '\25C8\A0';
+          }
+        }
+      }
+    }
+  }
+}

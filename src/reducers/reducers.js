@@ -10,13 +10,15 @@ import posts from './posts';
 import comments from './comments';
 import albums from './albums';
 import todos from './todos'
+import photos from './photos'
 
 const rootReducer = (history) => combineReducers({
   router: connectRouter(history),
   posts,
   comments,
   albums,
-  todos
+  todos,
+  photos
 })
 
 export default rootReducer;

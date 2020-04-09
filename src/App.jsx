@@ -6,7 +6,6 @@ el que se encarga de hacer que las funciones de las acciones y los datos se
 puedan acceder desde cualquier hijo de Main.
 */
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -15,10 +14,7 @@ import * as actions from './actions/actions';
 
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import Home from './components/Home.jsx';
-import Posts from './components/Posts.jsx';
-import Albums from './components/Albums.jsx';
-import Todos from './components/Todos.jsx';
+import Routes from './routes';
 
 class App extends Component {
   render() {
@@ -26,18 +22,7 @@ class App extends Component {
       <div className='site_wrapper'>
         <Header />
         <main className='page_content'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/posts'>
-              <Posts {...this.props} />
-            </Route>
-            <Route path='/albums'>
-              <Albums {...this.props} />
-            </Route>
-            <Route path='/todos'>
-              <Todos {...this.props} />
-            </Route>
-          </Switch>
+          <Routes {...this.props} />
         </main>
         <Footer />
       </div>
@@ -54,7 +39,8 @@ const mapStateToProps = (state) => ({
   comments: state.comments,
   albums: state.albums,
   todos: state.todos,
-  pathname: state.router.location.pathname
+  photos: state.photos,
+  pathname: state.router.location.pathname,
 });
 
 // 'dispatch' es la función que puede verse en $r.store.dispatch

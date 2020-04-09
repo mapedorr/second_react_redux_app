@@ -1,0 +1,74 @@
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+G L O B A L
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+html, * {
+  // Personalizar la barra de desplazamiento del navegador
+  scrollbar-color: scrollbar_thumb scrollbar_bg;
+  cursor: cursor-arrow;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: scrollbar_bg;
+    border: 2px solid scrollbar_thumb;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: scrollbar_thumb;
+
+    // background: -webkit-gradient(linear,left top,left bottom,from(#ff8a00),to(#e52e71));
+    // background: linear-gradient(180deg,#ff8a00,#e52e71);
+    // border-radius: 30px;
+    // box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+  }
+}
+
+body {
+  background: _blue;
+  overflow: hidden;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 100;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+a, a * {
+  cursor: cursor-pointing_hand;
+}
+
+.site_wrapper {
+  display: flex;
+  flex-direction: column !important;
+  height: 100vh;
+}
+
+.c_y {
+  color: _yellow;
+}
+
+.c_p {
+  color: _pink;
+}
+
+.c_lb {
+  color: _light_blue;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.d-none {
+  display: none;
+}

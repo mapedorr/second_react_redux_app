@@ -1,4 +1,9 @@
 {
-  "workbench.colorTheme": "Darktooth",
-  "editor.renderWhitespace": "all"
+  "editor.renderWhitespace": "all",
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#2e3037",
+    "titleBar.inactiveForeground": "#2e3037DD",
+    "titleBar.activeBackground": "#ebe5ce",
+    "titleBar.inactiveBackground": "#ebe5ceDD"
+  }
 }

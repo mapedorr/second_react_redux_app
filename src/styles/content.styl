@@ -1,0 +1,47 @@
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+C O N T E N T
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.to_top {
+  float: right;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  line-height: 1.5rem;
+  color: _white;
+  border: none;
+
+  &:before, &:after {
+    content: '\25b2\a0';
+    color: _cyan;
+  }
+
+  &:before {
+    content: '\25b2\a0';
+  }
+
+  &:after {
+    content: '\a0\25b2';
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.page_content {
+  display: grid;
+  align-items: center;
+  flex-grow: 1;
+  margin: 4.5rem 2rem 1rem;
+  padding: 2rem 0 0;
+  border: 2px solid _white;
+  overflow-y: auto !important;
+}
+
+.home_page {
+  h1 {
+    selection_transparent(_yellow);
+  }
+}
