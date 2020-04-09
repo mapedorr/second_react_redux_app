@@ -15,7 +15,7 @@ export default class Posts extends Component {
           ))
         }
         <h1 className={this.props.posts.length > 0 ? 'd-none' : ''}>
-          Cargando...
+          loading...
         </h1>
       </div>
     );

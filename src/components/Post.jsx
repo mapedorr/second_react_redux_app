@@ -19,7 +19,7 @@ export default class Post extends Component {
           <Comment comment={comment} key={idx} {...this.props} />
         ))}
         <p className={`loading ${postComments.length > 0 ? 'd-none' : ''}`}>
-          cargando comentarios...
+          loading comentarios...
         </p>
       </div>
     );

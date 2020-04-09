@@ -17,7 +17,7 @@ export default class Albums extends Component {
           </div>
         ))}
         <h1 className={this.props.albums.length > 0 ? 'd-none' : ''}>
-          Cargando...
+          loading...
         </h1>
       </div>
     );

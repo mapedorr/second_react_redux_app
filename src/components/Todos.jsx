@@ -26,7 +26,7 @@ export default class Todos extends Component {
           </div>
         ))}
         <h1 className={Object.entries(this.props.todos).length > 0 ? 'd-none' : ''}>
-          Cargando...
+          loading...
         </h1>
       </div>
     );

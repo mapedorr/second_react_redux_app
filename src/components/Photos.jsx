@@ -38,12 +38,12 @@ const Photos = (props) => {
             key={photo.id}
           />
           <div className='photo_hover' onClick={() => setClickedImg(photo)}>
-            <div className='photo_view'>clic para abrir</div>
+            <div className='photo_view'>click to open</div>
           </div>
         </div>
       ))}
       <h1 className={props.photos.length > 0 ? 'd-none' : ''}>
-        Cargando fotos del álbum {albumId}...
+        loading fotos del álbum {albumId}...
       </h1>
     </div>
   );
