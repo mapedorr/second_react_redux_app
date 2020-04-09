@@ -23,6 +23,7 @@ export const GET_TODOS_ERR = 'GET_TODOS_ERR';
 
 export const GET_PHOTOS = 'GET_PHOTOS';
 export const GET_PHOTOS_ERR = 'GET_PHOTOS_ERR';
+export const CLEAN_PHOTOS = 'CLEAN_PHOTOS';
 
 const BASE = 'https://jsonplaceholder.typicode.com';
 
@@ -173,4 +174,8 @@ export const getPhotosFor = (albumId) => {
     );
   };
 };
+
+export const cleanPhotos = () => ({
+  type: CLEAN_PHOTOS
+});
 // └────────────────────────────────────────────────────────────────┘

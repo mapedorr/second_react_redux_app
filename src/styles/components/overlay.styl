@@ -1,0 +1,60 @@
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+O V E R L A Y
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.overlay {
+  position: fixed;
+  background: url('../assets/images/dither.png');
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  z-index: 2;
+
+  &.open {
+    display: grid;
+    place-items: center center;
+  }
+
+  & .overlay-inner {
+    width: 700px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-auto-flow: column;
+    align-items: center;
+    align-content: center;
+    background: _yellow;
+
+    .close {
+      grid-column: 2 / -1;
+      text-align: right;
+      color: _pink;
+      cursor: pointer;
+      padding: 0 1rem;
+      font-size: 2.1rem;
+      font-weight: bold;
+      cursor: cursor-pointing_hand;
+      background: transparent;
+      border: 0;
+
+      &:hover {
+        background: _pink;
+        color: _white;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      text-align: center;
+      background: url(../assets/images/dither.png);
+      line-height: 3rem;
+    }
+
+    img {
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+  }
+}
